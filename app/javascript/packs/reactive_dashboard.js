@@ -19,6 +19,7 @@ const ReactiveDashboard = () => (
         <li><Link to='/'>Reactive Dashboard</Link></li>
         <li><Link to='login'>Login</Link></li>
       </ul>
+      <hr />
       <div>
         <DashboardRoutes />
       </div>
