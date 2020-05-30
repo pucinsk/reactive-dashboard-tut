@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is code for Auth with Rails, Graphql and React guides. 
 
-Things you may want to cover:
+It uses:
+* Rails 6.0.3
+* Webpack + ReactJS 
+* Sqlite DB
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run a project, simply run: 
+```
+bundle 
+yarn install
+rails db:setup
+rails s
+bin/webpack-dev-server (for development)
+```
