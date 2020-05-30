@@ -3,13 +3,7 @@
   module Graphql
     # base class of all GraphqlControllers
     class GraphqlApplicationController < GraphqlRails::Controller
-      action(:dummy_query).returns('String')
       action(:dummy_mutation).returns('String')
-
-      def dummy_query
-        'GrapQL must have at least one query and mutation.' \
-          'Remove me after your first real query will be implemented.'
-      end
 
       def dummy_mutation
         'GrapQL must have at least one query and mutation.' \
