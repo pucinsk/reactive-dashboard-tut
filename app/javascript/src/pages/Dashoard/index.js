@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import AppContext from '../../../packs/reactive_dashboard'
+import AppContext from '../../AppContext'
 
 const TODO_LISTS_QUERY = gql`
   query getTodoLists{
