@@ -5,10 +5,12 @@ import { setContext } from '@apollo/link-context'
 
 const authLink = setContext((_, { headers }) => {
   const csfrToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+  const jwtToken = localStorage.getItem('token')
 
   return {
     headers: {
       ...headers,
+      'Authorization': `Token ${jwtToken}`,
       'X-CSRF-Token': csfrToken
     }
   }

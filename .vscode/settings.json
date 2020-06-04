@@ -1,0 +1,15 @@
+{
+  "copyCodeBlock.formats": [
+
+    {
+      "formatName": "default",
+      "codeBlockHeaderFormat": "${workspaceFolderRelativePath}:${topLineNumber}${EOL}",
+      "codeBlockFooterFormat": "",
+      "codeLineFormat": "${CODE}${EOL}",
+      "multipleSelectionCreateMultipleCodeBlocks": false,
+      "multipleSelectionsBoundalyMarkerFormat": "---${EOL}",
+      "forcePathSeparatorSlash": false,
+      "forceSpaceIndent": false
+    }
+  ]
+}
