@@ -5,6 +5,18 @@ class JwtToken
     @account = account
   end
 
+  class << self
+    def decode(token)
+      JWT.decode(token, hmac_secret, true, algorithm: HMACK)[0]
+    rescue JWT::DecodeError
+      {}
+    end
+
+    def hmac_secret
+      Rails.application.credentials.hmac_secret
+    end
+  end
+
   def token
     @token = JWT.encode(payload, hmac_secret, HMACK)
   end
@@ -25,6 +37,6 @@ class JwtToken
   end
 
   def hmac_secret
-    Rails.application.credentials.hmac_secret
+    self.class.hmac_secret
   end
 end

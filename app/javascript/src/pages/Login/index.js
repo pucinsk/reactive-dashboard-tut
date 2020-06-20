@@ -11,6 +11,7 @@ const LOGIN_MUTATION = gql`
 `
 
 const LoginContext = createContext()
+
 const LoginProvider = ({ children }) => {
   const { setToken, setAppLoading, setError, redirectHome } = useContext(AppContext)
 
