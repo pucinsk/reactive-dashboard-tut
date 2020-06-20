@@ -15,6 +15,8 @@ class GraphqlController < ApplicationController
   # data defined here will be accessible via `grapqhl_request.context`
   # in GraphqlRails::Controller instances
   def graphql_context
-    {}
+    {
+      current_account: current_account
+    }
   end
 end

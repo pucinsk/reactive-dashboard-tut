@@ -1,14 +1,9 @@
 class AccountSession
   include ActiveModel::Validations
-  include GraphqlRails::Model
+  include AccountSessionGraphql
 
   validate :require_account_to_exist
   validate :require_valid_credentials
-
-  graphql do |gql|
-    gql.attribute :account, type: 'Account'
-    gql.attribute :token
-  end
 
   class << self
     def create(username:, password:)
