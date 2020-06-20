@@ -10,14 +10,10 @@ class AccountSession
     gql.attribute :token
   end
 
-  def token
-    SecureRandom.hex(10)
-  end
-
-  def account
-    return @account if defined?(@account)
-
-    @account = Account.find_by(username: username)
+  class << self
+    def create(username:, password:)
+      new(username: username, password: password).tap(&:valid?)
+    end
   end
 
   def initialize(username:, password:)
@@ -25,12 +21,15 @@ class AccountSession
     @password = password
   end
 
-  class << self
-    def create(username:, password:)
-      new(username: username, password: password).tap(&:valid?)
-    end
+  def token
+    @token ||= JwtToken.new(account: account).token
   end
 
+  def account
+    return @account if defined?(@account)
+
+    @account = Account.find_by(username: username)
+  end
 
   private
 

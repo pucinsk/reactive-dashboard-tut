@@ -40,3 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 .ruby-gemset
 .byebug_history
+.vscode
