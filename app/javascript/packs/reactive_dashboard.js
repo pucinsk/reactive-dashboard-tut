@@ -7,6 +7,8 @@ import { ApolloProvider } from '../src/Apollo'
 import { AppProvider } from '../src/AppContext'
 import AccountSection from '../src/components/AccountSection'
 
+export const Loading = () => <p>Loading...</p>
+
 const DashboardRoutes = () => (
   <>
     <Route exact path='/'><Dashboard /></Route>

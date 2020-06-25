@@ -5,24 +5,20 @@ import AppContext from '../../AppContext'
 const LOGIN_MUTATION = gql`
   mutation LOGIN_MUTATION($username: String, $password: String){
     createSession(username: $username, password: $password){
-      account {
-        id
-        username
-      }
       token
     }
   }
 `
 
 const LoginContext = createContext()
+
 const LoginProvider = ({ children }) => {
-  const { setAccount, setToken, setRedirectToHome } = useContext(AppContext)
+  const { setToken, setRedirectToHome } = useContext(AppContext)
   const [login, { data, loading, error: apolloError }] = useMutation(LOGIN_MUTATION, { errorPolicy: 'all' })
   const [error, setError] = useState('')
 
   useEffect(() => {
     if (data?.createSession) {
-      setAccount(data.createSession.account)
       setToken(data.createSession.token)
       setRedirectToHome(true)
     }
