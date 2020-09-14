@@ -13,9 +13,9 @@ const LOGIN_MUTATION = gql`
 const LoginContext = createContext()
 
 const LoginProvider = ({ children }) => {
-  const { setToken, setAppLoading, setError, redirectHome } = useContext(AppContext)
+  const { setToken, setAppLoading, setAppError, redirectHome } = useContext(AppContext)
 
-  const [login, { loading, error }] = useMutation(
+  const [login, { loading }] = useMutation(
     LOGIN_MUTATION,
     {
       onCompleted ({ createSession: { token } }) {
@@ -23,7 +23,7 @@ const LoginProvider = ({ children }) => {
         redirectHome()
       },
       onError({ graphQLErrors }) {
-        setError(graphQLErrors[0].message)
+        setAppError(graphQLErrors[0].message)
       }
     }
   )
@@ -33,23 +33,12 @@ const LoginProvider = ({ children }) => {
   return (
     <LoginContext.Provider
       value={{
-        login,
-        error
+        login
       }}
     >
       {children}
     </LoginContext.Provider>
     )
-}
-
-const LoginError = () => {
-  const { error } = useContext(LoginContext)
-
-  if (!error) return ''
-
-  return (
-    <p>Error: {error}</p>
-  )
 }
 
 const LoginForm = () => {
@@ -74,7 +63,6 @@ const LoginForm = () => {
         <br />
         <input type="submit" value="Login" />
       </form>
-      <LoginError />
     </>
   )
 }

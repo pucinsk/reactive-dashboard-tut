@@ -7,7 +7,7 @@ module Graphql
       .returns_list(required_list: true, required_inner: false)
 
     def index
-      TodoList.all
+      TodoList.includes(:account, :todo_items)
     end
   end
 end

@@ -18,7 +18,7 @@ class JwtToken
   end
 
   def token
-    @token = JWT.encode(payload, hmac_secret, HMACK)
+    @token ||= JWT.encode(payload, hmac_secret, HMACK)
   end
 
   private

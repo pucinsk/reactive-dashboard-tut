@@ -40,6 +40,7 @@ const Error = () => {
   return (
     <div className="error">
       <p>Error...</p>
+      <p><small>{appError}</small></p>
     </div>
   )
 }
